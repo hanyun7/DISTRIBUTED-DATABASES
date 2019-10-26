@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportVTDataSet" targetNamespace="http://tempuri.org/ReportVTDataSet.xsd" xmlns:mstns="http://tempuri.org/ReportVTDataSet.xsd" xmlns="http://tempuri.org/ReportVTDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReportVTDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportVTDataSet" msprop:Generator_UserDSName="ReportVTDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="DANH_x0020_SÁCH_x0020_VẬT_x0020_TƯ" msprop:Generator_TableClassName="DANH_SÁCH_VẬT_TƯDataTable" msprop:Generator_TableVarName="tableDANH_SÁCH_VẬT_TƯ" msprop:Generator_TablePropName="DANH_SÁCH_VẬT_TƯ" msprop:Generator_RowDeletingName="DANH_SÁCH_VẬT_TƯRowDeleting" msprop:Generator_RowChangingName="DANH_SÁCH_VẬT_TƯRowChanging" msprop:Generator_RowEvHandlerName="DANH_SÁCH_VẬT_TƯRowChangeEventHandler" msprop:Generator_RowDeletedName="DANH_SÁCH_VẬT_TƯRowDeleted" msprop:Generator_UserTableName="DANH SÁCH VẬT TƯ" msprop:Generator_RowChangedName="DANH_SÁCH_VẬT_TƯRowChanged" msprop:Generator_RowEvArgName="DANH_SÁCH_VẬT_TƯRowChangeEvent" msprop:Generator_RowClassName="DANH_SÁCH_VẬT_TƯRow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="MAVT" msprop:Generator_ColumnVarNameInTable="columnMAVT" msprop:Generator_ColumnPropNameInRow="MAVT" msprop:Generator_ColumnPropNameInTable="MAVTColumn" msprop:Generator_UserColumnName="MAVT" type="xs:string" minOccurs="0" />
+              <xs:element name="TENVT" msprop:Generator_ColumnVarNameInTable="columnTENVT" msprop:Generator_ColumnPropNameInRow="TENVT" msprop:Generator_ColumnPropNameInTable="TENVTColumn" msprop:Generator_UserColumnName="TENVT" type="xs:string" minOccurs="0" />
+              <xs:element name="DVT" msprop:Generator_ColumnVarNameInTable="columnDVT" msprop:Generator_ColumnPropNameInRow="DVT" msprop:Generator_ColumnPropNameInTable="DVTColumn" msprop:Generator_UserColumnName="DVT" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

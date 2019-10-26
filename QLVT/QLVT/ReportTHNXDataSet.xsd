@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportTHNXDataSet" targetNamespace="http://tempuri.org/ReportTHNXDataSet.xsd" xmlns:mstns="http://tempuri.org/ReportTHNXDataSet.xsd" xmlns="http://tempuri.org/ReportTHNXDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReportTHNXDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportTHNXDataSet" msprop:Generator_UserDSName="ReportTHNXDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="TỔNG_x0020_HỢP_x0020_NHẬP_x0020_XUẤT" msprop:Generator_TableClassName="TỔNG_HỢP_NHẬP_XUẤTDataTable" msprop:Generator_TableVarName="tableTỔNG_HỢP_NHẬP_XUẤT" msprop:Generator_RowChangedName="TỔNG_HỢP_NHẬP_XUẤTRowChanged" msprop:Generator_TablePropName="TỔNG_HỢP_NHẬP_XUẤT" msprop:Generator_RowDeletingName="TỔNG_HỢP_NHẬP_XUẤTRowDeleting" msprop:Generator_RowChangingName="TỔNG_HỢP_NHẬP_XUẤTRowChanging" msprop:Generator_RowEvHandlerName="TỔNG_HỢP_NHẬP_XUẤTRowChangeEventHandler" msprop:Generator_RowDeletedName="TỔNG_HỢP_NHẬP_XUẤTRowDeleted" msprop:Generator_RowClassName="TỔNG_HỢP_NHẬP_XUẤTRow" msprop:Generator_UserTableName="TỔNG HỢP NHẬP XUẤT" msprop:Generator_RowEvArgName="TỔNG_HỢP_NHẬP_XUẤTRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="NGAY" msprop:Generator_ColumnVarNameInTable="columnNGAY" msprop:Generator_ColumnPropNameInRow="NGAY" msprop:Generator_ColumnPropNameInTable="NGAYColumn" msprop:Generator_UserColumnName="NGAY" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="TONGN" msprop:Generator_ColumnVarNameInTable="columnTONGN" msprop:Generator_ColumnPropNameInRow="TONGN" msprop:Generator_ColumnPropNameInTable="TONGNColumn" msprop:Generator_UserColumnName="TONGN" type="xs:double" minOccurs="0" />
+              <xs:element name="TYLE1" msprop:Generator_ColumnVarNameInTable="columnTYLE1" msprop:Generator_ColumnPropNameInRow="TYLE1" msprop:Generator_ColumnPropNameInTable="TYLE1Column" msprop:Generator_UserColumnName="TYLE1" type="xs:double" minOccurs="0" />
+              <xs:element name="TONGX" msprop:Generator_ColumnVarNameInTable="columnTONGX" msprop:Generator_ColumnPropNameInRow="TONGX" msprop:Generator_ColumnPropNameInTable="TONGXColumn" msprop:Generator_UserColumnName="TONGX" type="xs:double" minOccurs="0" />
+              <xs:element name="TYLE2" msprop:Generator_ColumnVarNameInTable="columnTYLE2" msprop:Generator_ColumnPropNameInRow="TYLE2" msprop:Generator_ColumnPropNameInTable="TYLE2Column" msprop:Generator_UserColumnName="TYLE2" type="xs:double" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

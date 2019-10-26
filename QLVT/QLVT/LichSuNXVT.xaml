@@ -1,0 +1,137 @@
+﻿<Window x:Class="QLVT.LichSuNXVT"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QLVT"
+        mc:Ignorable="d"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"        
+        xmlns:uc="clr-namespace:QLVT.UserControlQLVT"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        
+        Name="PhieuNhapXuat"
+        Title="PHIẾU NHẬP XUẤT VẬT TƯ" Height="600" Width="1000" Loaded="PhieuNhapXuat_Loaded">
+    <Window.Resources>
+        <local:QLVTDataSet1 x:Key="qLVTDataSet1"/>
+        <CollectionViewSource x:Key="pHATSINHViewSource" Source="{Binding PHATSINH, Source={StaticResource qLVTDataSet1}}"/>
+        <CollectionViewSource x:Key="cT_PHATSINHViewSource" Source="{Binding CT_PHATSINH, Source={StaticResource qLVTDataSet1}}"/>
+    </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedThuChiCommand}" CommandParameter="{Binding ElementName=PhieuThuChi}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=PhieuThuChi}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1" Loaded="LichSuNXVT_Loaded" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Margin="15 5 15 5" FontWeight="ExtraBold" HorizontalAlignment="Center" Foreground="Purple"  FontFamily="Tahoma" Text="LỊCH SỬ NHẬP/XUẤT VẬT TƯ"  FontSize="30" VerticalAlignment="Center" ></TextBlock>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ComboBox x:Name="comboBoxCN" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" Height="38" SelectionChanged="comboBoxCN_SelectionChanged" />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <materialDesign:Card Margin="15,10.6,14.8,0" VerticalAlignment="Stretch" >
+                    <Grid Grid.Row="2">
+                        <StackPanel Orientation="Horizontal">
+                            <StackPanel.Resources>
+                                <Style TargetType="Button">
+                                    <Setter Property="FontSize" Value="15"></Setter>
+                                    <Setter Property="FontWeight" Value="Bold"></Setter>
+                                    <Setter Property="Height" Value="40"></Setter>
+                                    <Setter Property="Margin" Value="15"></Setter>
+                                </Style>
+                            </StackPanel.Resources>
+                            <Button ToolTip="Xem tất cả lịch sử" Background="#FF8A00" Content="Xem Tất Cả" Width="120" Click="ButtonALL_Click" ></Button>
+                            <Button ToolTip="Xóa Phiếu Nhập/Xuất" Background="#FF1A1A" Content="Xóa PHIẾU" Width="110" Click="ButtonDeletePHIEU_Click" ></Button>
+                            <Button ToolTip="Xóa Chi Tiết Phiếu Nhập/Xuất" Background="#89ffaa" Content="Xóa CT_PHIẾU" Width="120" Click="ButtonDeleteCTPHIEU_Click" ></Button>
+                            <Button ToolTip="Thêm phiếu Nhập/Xuất vật tư" Background="#d5ea83" Content="PHIẾU NHẬP/XUẤT" Width="150" Click="ButtonAddNX_Click" ></Button>
+                            <Button ToolTip="Thêm phiếu Thu/Chi" Background="#5389b2" Content="PHIẾU THU/CHI" Width="150" Click="ButtonAddTC_Click"></Button>
+                            <Button Command="{Binding INDSNVCommand}"  Background="#aa68e8" Content="IN DANH SÁCH" Width="140" Click="ButtonInDSNX_Click" ></Button>
+                        </StackPanel>
+                    </Grid>
+                </materialDesign:Card>
+            </Grid>
+            <Grid Grid.Row="2" DataContext="{StaticResource pHATSINHViewSource}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"></ColumnDefinition>
+                    <ColumnDefinition Width="auto"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0" DataContext="{StaticResource pHATSINHViewSource}">
+                    <materialDesign:Card ToolTip="Thông tin nhập/xuất kho" Margin="15 15 7 15" VerticalAlignment="Stretch" >
+                        <ScrollViewer VerticalScrollBarVisibility="Disabled">
+                            <DataGrid x:Name="pHATSINHDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="selected">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn x:Name="pHIEUColumn" Header="PHIEU" Width="90">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <TextBlock Text="{Binding PHIEU}" />
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTemplateColumn x:Name="nGAYColumn" Header="NGÀY" Width="105">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <DatePicker SelectedDate="{Binding NGAY, Mode=TwoWay, NotifyOnValidationError=true, ValidatesOnExceptions=true}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn x:Name="lOAIColumn" Binding="{Binding LOAI}" Header="LOẠI" Width="60"/>
+                                    <DataGridTextColumn x:Name="hOTENKHColumn" Binding="{Binding HOTENKH}" Header="KHÁCH HÀNG" Width="130"/>
+                                    <DataGridTextColumn x:Name="tHANHTIENColumn" Binding="{Binding THANHTIEN}" Header="THÀNH TIỀN" Width="105"/>
+                                    <DataGridTextColumn x:Name="mANVColumn" Binding="{Binding MANV}" Header="MANV" Width="70"/>
+                                    <DataGridTextColumn x:Name="mAKHOColumn" Binding="{Binding MAKHO}" Header="MAKHO" Width="100"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+
+                <Grid Grid.Column="1" DataContext="{StaticResource cT_PHATSINHViewSource}">
+                    <materialDesign:Card Margin="7 15 15 15" VerticalAlignment="Stretch" >
+                        <ScrollViewer VerticalScrollBarVisibility="Disabled" >
+                            <DataGrid x:Name="cT_PHATSINHDataGrid" AutoGenerateColumns="False" EnableRowVirtualization="True" ItemsSource="{Binding}" RowDetailsVisibilityMode="VisibleWhenSelected" SelectionChanged="selectedCTPS">
+                                <DataGrid.Columns>
+                                    <DataGridTextColumn x:Name="mAVTColumn" Binding="{Binding MAVT}" Header="MAVT" Width="100"/>
+                                    <DataGridTextColumn x:Name="sOLUONGColumn" Binding="{Binding SOLUONG}" Header="SỐ LƯỢNG" Width="100"/>
+                                    <DataGridTextColumn x:Name="dONGIAColumn" Binding="{Binding DONGIA}" Header="ĐƠN GIÁ" Width="100"/>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </ScrollViewer>
+                    </materialDesign:Card>
+                </Grid>
+            </Grid>
+        </Grid>
+    </Grid>
+
+</Window>

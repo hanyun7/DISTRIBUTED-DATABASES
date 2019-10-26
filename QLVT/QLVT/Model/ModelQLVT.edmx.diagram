@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c3fefa75712c4d7d9da7061042fde7e8" Name="Diagram1">
+        <EntityTypeShape EntityType="QLVTModel.CHINHANH" Width="1.5" PointX="0.75" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVTModel.CT_PHATSINH" Width="1.5" PointX="7.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVTModel.KHO" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVTModel.NHANVIEN" Width="1.5" PointX="3" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVTModel.PHATSINH" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="QLVTModel.VATTU" Width="1.5" PointX="5.25" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="QLVTModel.FK_KHO_CHINHANH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVTModel.FK_NHANVIEN_CHINHANH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVTModel.FK_CT_PHATSINH_PHATSINH" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVTModel.FK_CT_PHATSINH_VATTU" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVTModel.FK_PHATSINH_KHO" ManuallyRouted="false" />
+        <AssociationConnector Association="QLVTModel.FK_PHATSINH_NHANVIEN" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

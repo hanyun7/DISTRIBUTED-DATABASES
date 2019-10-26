@@ -1,0 +1,173 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="QLVTModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="CHINHANH">
+    <Key>
+      <PropertyRef Name="MACN" />
+    </Key>
+    <Property Name="MACN" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="CHINHANH" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="100" />
+    <Property Name="SODT" Type="varchar" MaxLength="50" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CT_PHATSINH">
+    <Key>
+      <PropertyRef Name="PHIEU" />
+      <PropertyRef Name="MAVT" />
+    </Key>
+    <Property Name="PHIEU" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="MAVT" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="SOLUONG" Type="int" Nullable="false" />
+    <Property Name="DONGIA" Type="float" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="KHO">
+    <Key>
+      <PropertyRef Name="MAKHO" />
+    </Key>
+    <Property Name="MAKHO" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TENKHO" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="70" Nullable="false" />
+    <Property Name="MACN" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="NHANVIEN">
+    <Key>
+      <PropertyRef Name="MANV" />
+    </Key>
+    <Property Name="MANV" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="HO" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="TEN" Type="nvarchar" MaxLength="10" Nullable="false" />
+    <Property Name="DIACHI" Type="nvarchar" MaxLength="40" />
+    <Property Name="NGAYSINH" Type="datetime" Nullable="false" />
+    <Property Name="LUONG" Type="float" Nullable="false" />
+    <Property Name="MACN" Type="char" MaxLength="10" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHATSINH">
+    <Key>
+      <PropertyRef Name="PHIEU" />
+    </Key>
+    <Property Name="PHIEU" Type="char" MaxLength="8" Nullable="false" />
+    <Property Name="NGAY" Type="datetime" Nullable="false" />
+    <Property Name="LOAI" Type="char" MaxLength="1" Nullable="false" />
+    <Property Name="HOTENKH" Type="nvarchar" MaxLength="40" Nullable="false" />
+    <Property Name="THANHTIEN" Type="float" Nullable="false" />
+    <Property Name="MANV" Type="numeric" Precision="18" Scale="0" Nullable="false" />
+    <Property Name="MAKHO" Type="char" MaxLength="4" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <EntityType Name="VATTU">
+    <Key>
+      <PropertyRef Name="MAVT" />
+    </Key>
+    <Property Name="MAVT" Type="char" MaxLength="4" Nullable="false" />
+    <Property Name="TENVT" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DVT" Type="nvarchar" MaxLength="15" Nullable="false" />
+    <Property Name="rowguid" Type="uniqueidentifier" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_CT_PHATSINH_PHATSINH">
+    <End Role="PHATSINH" Type="Self.PHATSINH" Multiplicity="1" />
+    <End Role="CT_PHATSINH" Type="Self.CT_PHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PHATSINH">
+        <PropertyRef Name="PHIEU" />
+      </Principal>
+      <Dependent Role="CT_PHATSINH">
+        <PropertyRef Name="PHIEU" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_CT_PHATSINH_VATTU">
+    <End Role="VATTU" Type="Self.VATTU" Multiplicity="1" />
+    <End Role="CT_PHATSINH" Type="Self.CT_PHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="VATTU">
+        <PropertyRef Name="MAVT" />
+      </Principal>
+      <Dependent Role="CT_PHATSINH">
+        <PropertyRef Name="MAVT" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_KHO_CHINHANH">
+    <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="1" />
+    <End Role="KHO" Type="Self.KHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHINHANH">
+        <PropertyRef Name="MACN" />
+      </Principal>
+      <Dependent Role="KHO">
+        <PropertyRef Name="MACN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_NHANVIEN_CHINHANH">
+    <End Role="CHINHANH" Type="Self.CHINHANH" Multiplicity="1" />
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHINHANH">
+        <PropertyRef Name="MACN" />
+      </Principal>
+      <Dependent Role="NHANVIEN">
+        <PropertyRef Name="MACN" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHATSINH_KHO">
+    <End Role="KHO" Type="Self.KHO" Multiplicity="0..1" />
+    <End Role="PHATSINH" Type="Self.PHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="KHO">
+        <PropertyRef Name="MAKHO" />
+      </Principal>
+      <Dependent Role="PHATSINH">
+        <PropertyRef Name="MAKHO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_PHATSINH_NHANVIEN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="1" />
+    <End Role="PHATSINH" Type="Self.PHATSINH" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MANV" />
+      </Principal>
+      <Dependent Role="PHATSINH">
+        <PropertyRef Name="MANV" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="QLVTModelStoreContainer">
+    <EntitySet Name="CHINHANH" EntityType="Self.CHINHANH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CT_PHATSINH" EntityType="Self.CT_PHATSINH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="KHO" EntityType="Self.KHO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PHATSINH" EntityType="Self.PHATSINH" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="VATTU" EntityType="Self.VATTU" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_CT_PHATSINH_PHATSINH" Association="Self.FK_CT_PHATSINH_PHATSINH">
+      <End Role="PHATSINH" EntitySet="PHATSINH" />
+      <End Role="CT_PHATSINH" EntitySet="CT_PHATSINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_CT_PHATSINH_VATTU" Association="Self.FK_CT_PHATSINH_VATTU">
+      <End Role="VATTU" EntitySet="VATTU" />
+      <End Role="CT_PHATSINH" EntitySet="CT_PHATSINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_KHO_CHINHANH" Association="Self.FK_KHO_CHINHANH">
+      <End Role="CHINHANH" EntitySet="CHINHANH" />
+      <End Role="KHO" EntitySet="KHO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_NHANVIEN_CHINHANH" Association="Self.FK_NHANVIEN_CHINHANH">
+      <End Role="CHINHANH" EntitySet="CHINHANH" />
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHATSINH_KHO" Association="Self.FK_PHATSINH_KHO">
+      <End Role="KHO" EntitySet="KHO" />
+      <End Role="PHATSINH" EntitySet="PHATSINH" />
+    </AssociationSet>
+    <AssociationSet Name="FK_PHATSINH_NHANVIEN" Association="Self.FK_PHATSINH_NHANVIEN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="PHATSINH" EntitySet="PHATSINH" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

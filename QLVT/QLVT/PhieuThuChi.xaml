@@ -1,0 +1,98 @@
+﻿<Window x:Class="QLVT.PhieuThuChi"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QLVT"
+        mc:Ignorable="d"
+        
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"        
+        xmlns:uc="clr-namespace:QLVT.UserControlQLVT"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        
+        Name="PhieuThuChiWindow"
+        Title="PHIẾU THU/CHI" Height="450" Width="900" Loaded="PhieuThuChiWindow_Loaded">
+    <Window.Resources>
+        <local:QLVTDataSet1 x:Key="qLVTDataSet1"/>
+        <CollectionViewSource x:Key="nHANVIENViewSource" Source="{Binding NHANVIEN, Source={StaticResource qLVTDataSet1}}"/>
+        <CollectionViewSource x:Key="kHOViewSource" Source="{Binding KHO, Source={StaticResource qLVTDataSet1}}"/>
+    </Window.Resources>
+
+    <i:Interaction.Triggers>
+        <i:EventTrigger EventName="Loaded">
+            <i:InvokeCommandAction Command="{Binding LoadedThuChiCommand}" CommandParameter="{Binding ElementName=PhieuThuChiWindow}"/>
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <uc:ControlBarUC Tag="{Binding Title, ElementName=PhieuThuChiWindow}"></uc:ControlBarUC>
+        </Grid>
+        <Grid Grid.Row="1" Loaded="PHIEUTC_Loaded">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition Height="auto"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" Margin="10,0,-0.2,2.4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="3*"></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <TextBlock Margin="15 5 15 5" FontWeight="ExtraBold" HorizontalAlignment="Center" Foreground="Purple"  FontFamily="Tahoma" Text="PHIẾU THU/CHI"  FontSize="30" VerticalAlignment="Center" ></TextBlock>
+                </Grid>
+                <Grid Grid.Column="1">
+                    <ComboBox x:Name="comboBoxCN" HorizontalAlignment="Left" VerticalAlignment="Center" Width="180" Height="38" SelectionChanged="comboBoxCN_SelectionChanged"  />
+                </Grid>
+            </Grid>
+            <Grid Grid.Row="1">
+                <materialDesign:Card Margin="15,14.6,14.8,0">
+                    <WrapPanel Grid.Column="0"  Orientation="Horizontal" Margin="0 0 0 20">
+                        <TextBox x:Name="BoxPHIEU" Text="{Binding PHIEU}" materialDesign:HintAssist.Hint="MÃ PHIẾU" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="200" Margin="15 5 15 5" KeyUp="SearchPHIEU" ></TextBox>
+                        <ComboBox x:Name="comboBoxMANV" ToolTip="Chọn nhân viên nhập vật tư" materialDesign:HintAssist.Hint="Mã Nhân Viên" ItemsSource="{Binding Source={StaticResource nHANVIENViewSource}}" SelectedItem="{Binding SelectedNhanVien}" Width="800" Margin="15 5 15 5" Style="{StaticResource MaterialDesignFloatingHintComboBox}" DisplayMemberPath="MANV"></ComboBox>
+                        <TextBox x:Name="BoxHOTENKH" Text="{Binding HOTENKH}" materialDesign:HintAssist.Hint="Họ Tên Khách Hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="800" Margin="15 5 15 5" ></TextBox>
+                        <ComboBox x:Name="comboBoxPHIEU" ToolTip="Chọn loại phiếu" materialDesign:HintAssist.Hint="Loại Phiếu" ItemsSource="{Binding}" SelectedItem="{Binding SelectedLoaiPhieu}" Width="200" Margin="15 5 15 5" Style="{StaticResource MaterialDesignFloatingHintComboBox}"></ComboBox>
+                        <ComboBox x:Name="comboBoxMAKHO" ToolTip="Chọn kho nhập/xuất" materialDesign:HintAssist.Hint="Kho" ItemsSource="{Binding Source={StaticResource kHOViewSource}}" SelectedItem="{Binding SelectedKho}"  Width="100" Margin="15 5 15 5" Style="{StaticResource MaterialDesignFloatingHintComboBox}" DisplayMemberPath="MAKHO"></ComboBox>
+                        <DatePicker x:Name="NGAYNHAP" Width="200" SelectedDateFormat="Short" SelectedDate="{Binding NgayNhap, UpdateSourceTrigger=PropertyChanged}"  materialDesign:HintAssist.Hint="Ngày Nhập" Style="{StaticResource MaterialDesignFloatingHintDatePicker}"  Margin="15 5 15 5" />
+                        <TextBox x:Name="TONGTIEN" Text="{Binding TongTien}" materialDesign:HintAssist.Hint="Tổng Tiền" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Width="210" Margin="15 5 15 5" ></TextBox>
+                    </WrapPanel>
+                </materialDesign:Card>
+            </Grid>
+
+            <Grid Grid.Row="3">
+                <materialDesign:Card Margin="15,14.6,14.8,0"  >
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                        <StackPanel.Resources>
+                            <Style TargetType="Button">
+                                <Setter Property="FontSize" Value="15"></Setter>
+                                <Setter Property="FontWeight" Value="Bold"></Setter>
+                                <Setter Property="Height" Value="40"></Setter>
+                                <Setter Property="Width" Value="110"></Setter>
+                                <Setter Property="Margin" Value="15"></Setter>
+                            </Style>
+                        </StackPanel.Resources>
+                        <Button Command="{Binding AddCommand}" Background="#FF8A00" Content="Thêm" Click="ButtonAdd_Click"  ></Button>
+                    </StackPanel>
+                </materialDesign:Card>
+            </Grid>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="ReportNXDataSet" targetNamespace="http://tempuri.org/ReportNXDataSet.xsd" xmlns:mstns="http://tempuri.org/ReportNXDataSet.xsd" xmlns="http://tempuri.org/ReportNXDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+  <xs:annotation>
+    <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
+      <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+        <Connections />
+        <Tables />
+        <Sources />
+      </DataSource>
+    </xs:appinfo>
+  </xs:annotation>
+  <xs:element name="ReportNXDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="ReportNXDataSet" msprop:Generator_UserDSName="ReportNXDataSet">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element name="CHI_x0020_TIẾT_x0020_TRỊ_x0020_GIÁ_x0020_HÀNG_x0020_HÓA" msprop:Generator_TableClassName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓADataTable" msprop:Generator_TableVarName="tableCHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓA" msprop:Generator_TablePropName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓA" msprop:Generator_RowDeletingName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓARowDeleting" msprop:Generator_RowChangingName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓARowChanging" msprop:Generator_RowEvHandlerName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓARowChangeEventHandler" msprop:Generator_RowDeletedName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓARowDeleted" msprop:Generator_UserTableName="CHI TIẾT TRỊ GIÁ HÀNG HÓA" msprop:Generator_RowChangedName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓARowChanged" msprop:Generator_RowEvArgName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓARowChangeEvent" msprop:Generator_RowClassName="CHI_TIẾT_TRỊ_GIÁ_HÀNG_HÓARow">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PHIEU" msprop:Generator_ColumnVarNameInTable="columnPHIEU" msprop:Generator_ColumnPropNameInRow="PHIEU" msprop:Generator_ColumnPropNameInTable="PHIEUColumn" msprop:Generator_UserColumnName="PHIEU" type="xs:string" minOccurs="0" />
+              <xs:element name="MAVT" msprop:Generator_ColumnVarNameInTable="columnMAVT" msprop:Generator_ColumnPropNameInRow="MAVT" msprop:Generator_ColumnPropNameInTable="MAVTColumn" msprop:Generator_UserColumnName="MAVT" type="xs:string" minOccurs="0" />
+              <xs:element name="SOLUONG" msprop:Generator_ColumnVarNameInTable="columnSOLUONG" msprop:Generator_ColumnPropNameInRow="SOLUONG" msprop:Generator_ColumnPropNameInTable="SOLUONGColumn" msprop:Generator_UserColumnName="SOLUONG" type="xs:int" minOccurs="0" />
+              <xs:element name="DONGIA" msprop:Generator_ColumnVarNameInTable="columnDONGIA" msprop:Generator_ColumnPropNameInRow="DONGIA" msprop:Generator_ColumnPropNameInTable="DONGIAColumn" msprop:Generator_UserColumnName="DONGIA" type="xs:double" minOccurs="0" />
+              <xs:element name="TRIGIA" msprop:Generator_ColumnVarNameInTable="columnTRIGIA" msprop:Generator_ColumnPropNameInRow="TRIGIA" msprop:Generator_ColumnPropNameInTable="TRIGIAColumn" msprop:Generator_UserColumnName="TRIGIA" type="xs:double" minOccurs="0" />
+              <xs:element name="NGAY" msprop:Generator_ColumnVarNameInTable="columnNGAY" msprop:Generator_ColumnPropNameInRow="NGAY" msprop:Generator_ColumnPropNameInTable="NGAYColumn" msprop:Generator_UserColumnName="NGAY" type="xs:dateTime" minOccurs="0" />
+              <xs:element name="MAKHO" msprop:Generator_ColumnVarNameInTable="columnMAKHO" msprop:Generator_ColumnPropNameInRow="MAKHO" msprop:Generator_ColumnPropNameInTable="MAKHOColumn" msprop:Generator_UserColumnName="MAKHO" type="xs:string" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
